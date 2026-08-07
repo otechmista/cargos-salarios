@@ -6,13 +6,15 @@ Fontes: Robert Half (Guia Salarial 2026), Michael Page, Glassdoor Brasil, Nerdin
 
 ## Publicar no GitHub Pages
 
-1. Crie um repositório no GitHub (pode ser público ou privado, desde que o plano permita Pages).
-2. Suba estes arquivos para a raiz do repositório (ou para `/docs`, se preferir):
-   - `index.html`
-   - `og-image.svg`
-3. No repositório: **Settings → Pages → Build and deployment → Source: Deploy from a branch**, escolha a branch (`main`) e a pasta (`/root` ou `/docs`).
-4. Aguarde alguns minutos — o GitHub publica em `https://SEU-USUARIO.github.io/SEU-REPOSITORIO/`.
-5. Abra `index.html` e troque a tag `<meta property="og:url" content="...">` pela URL final, para o preview em redes sociais ficar correto.
+Este repositório já inclui um workflow (`.github/workflows/deploy.yml`) que publica o site automaticamente a cada `push` na branch `main`, usando o Actions oficial do GitHub Pages.
+
+1. Crie o repositório no GitHub e envie este projeto (veja "Comandos" abaixo).
+2. No repositório: **Settings → Pages → Build and deployment → Source: GitHub Actions**. Não é preciso escolher branch/pasta — o workflow cuida disso.
+3. Cada push em `main` dispara o job em **Actions**; acompanhe ali até o status ficar verde.
+4. O site fica disponível em `https://SEU-USUARIO.github.io/SEU-REPOSITORIO/`.
+5. Abra `index.html` e troque a tag `<meta property="og:url" content="...">` pela URL final, para o preview em redes sociais ficar correto — depois faça commit e push da alteração.
+
+Se preferir não usar Actions, dá para trocar o Source de volta para **Deploy from a branch** (`main`, pasta raiz) a qualquer momento — o `index.html` funciona do mesmo jeito nos dois modos.
 
 ## Comandos (a partir desta pasta)
 
