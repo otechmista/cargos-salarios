@@ -272,7 +272,6 @@
   .table-scroll { overflow-x: auto; border: 1px solid var(--border); border-radius: 10px; background: var(--surface); box-shadow: var(--shadow); }
   table { border-collapse: collapse; width: 100%; min-width: 760px; font-size: 0.9rem; }
   thead th {
-    position: sticky; top: 52px;
     background: var(--surface-2);
     text-align: left;
     font-family: var(--font-mono);
@@ -285,6 +284,7 @@
     border-bottom: 1px solid var(--border);
     white-space: nowrap;
   }
+  table.main-table thead th { position: sticky; top: 52px; }
   th.num, td.num { text-align: right; }
   tbody td {
     padding: 0.6rem 0.9rem;
@@ -381,7 +381,7 @@
   <p class="region-note" id="region-note"></p>
 
   <div class="table-scroll">
-    <table>
+    <table class="main-table">
       <thead>
         <tr>
           <th>Cargo</th>
