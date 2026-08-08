@@ -5,9 +5,9 @@
       <stop offset="1" stop-color="#0d1512" />
     </linearGradient>
     <linearGradient id="rule" x1="0" y1="0" x2="1200" y2="0" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#3fc0a0" stop-opacity="0" />
-      <stop offset="0.5" stop-color="#3fc0a0" />
-      <stop offset="1" stop-color="#3fc0a0" stop-opacity="0" />
+      <stop offset="0" stop-color="#6ea8f0" stop-opacity="0" />
+      <stop offset="0.5" stop-color="#6ea8f0" />
+      <stop offset="1" stop-color="#6ea8f0" stop-opacity="0" />
     </linearGradient>
   </defs>
 
@@ -27,7 +27,7 @@
     <line x1="740" y1="520" x2="1160" y2="520" />
   </g>
 
-  <text x="80" y="108" font-family="ui-monospace, 'SF Mono', 'Cascadia Code', Consolas, monospace" font-size="22" letter-spacing="3" fill="#3fc0a0">MERCADO DE TI · BRASIL</text>
+  <text x="80" y="108" font-family="ui-monospace, 'SF Mono', 'Cascadia Code', Consolas, monospace" font-size="22" letter-spacing="3" fill="#6ea8f0">MERCADO DE TI · BRASIL</text>
 
   <text x="78" y="215" font-family="Georgia, 'Iowan Old Style', 'Palatino Linotype', serif" font-size="70" fill="#e7ece9">Cargos &amp; Salários</text>
   <text x="78" y="295" font-family="Georgia, 'Iowan Old Style', 'Palatino Linotype', serif" font-size="70" fill="#e7ece9">em TI, 2026</text>
@@ -39,7 +39,7 @@
   <!-- CLT / PJ legend -->
   <circle cx="92" cy="440" r="9" fill="#dba640" />
   <text x="112" y="449" font-family="-apple-system, 'Segoe UI', sans-serif" font-size="25" fill="#e7ece9">CLT</text>
-  <circle cx="220" cy="440" r="9" fill="#7ba1ef" />
+  <circle cx="220" cy="440" r="9" fill="#3fc0a0" />
   <text x="240" y="449" font-family="-apple-system, 'Segoe UI', sans-serif" font-size="25" fill="#e7ece9">PJ</text>
 
   <text x="80" y="560" font-family="ui-monospace, 'SF Mono', Consolas, monospace" font-size="19" fill="#565f5b">Robert Half · Michael Page · Glassdoor · Nerdin · Código Fonte TV</text>

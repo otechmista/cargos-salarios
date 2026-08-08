@@ -1,0 +1,4 @@
+# Normaliza quebras de linha para LF no repositório, independente do autocrlf local do
+# Git no Windows — evita o aviso "will be converted to CRLF" no GitHub Desktop/CLI e
+# mantém diffs consistentes entre quem edita no Windows, Mac ou Linux.
+* text=auto eol=lf

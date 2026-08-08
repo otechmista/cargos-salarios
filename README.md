@@ -1,6 +1,13 @@
-# Cargos & Salários em TI — Brasil 2026
+# Emprega
 
-Site estático (HTML/CSS/JS puro, sem build/bundler) com duas páginas:
+**Emprega** é um projeto com um objetivo simples: ajudar profissionais de TI a se empregar melhor no
+Brasil — entender quanto vale o próprio trabalho e, à frente, encontrar as vagas certas.
+
+O projeto começou pelas duas ferramentas mais imediatas — quanto pesquisar e como comparar CLT x PJ —,
+mas a visão final é um **portal gratuito que funcione como agregador de vagas de TI espalhadas pela
+internet** (LinkedIn, Gupy, empresas, outros agregadores), permitindo buscar e filtrar tudo num só lugar.
+
+Hoje o projeto é um site estático (HTML/CSS/JS puro, sem build/bundler) com duas páginas:
 
 - **`index.html`** — tabela cruzada de cargos e salários de TI no Brasil, do estágio ao C-level, comparando regimes **CLT** e **PJ**, com faixas estimadas por estado/região.
 - **`calculadora.html`** — calculadora que converte salário entre CLT e PJ nos dois sentidos, considerando 13º, férias remuneradas (+1/3), FGTS, INSS, IRRF, Simples Nacional, INSS pró-labore e contador.
