@@ -1,6 +1,6 @@
-# Emprega
+# Emprega TI
 
-**Emprega** é um projeto com um objetivo simples: ajudar profissionais de TI a se empregar melhor no
+**Emprega TI** é um projeto com um objetivo simples: ajudar profissionais de TI a se empregar melhor no
 Brasil — entender quanto vale o próprio trabalho e, à frente, encontrar as vagas certas.
 
 O projeto começou pelas duas ferramentas mais imediatas — quanto pesquisar e como comparar CLT x PJ —,

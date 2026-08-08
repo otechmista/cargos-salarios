@@ -1,4 +1,4 @@
-# Emprega
+# Emprega TI
 
 Ajudar profissionais de TI a se empregar melhor no Brasil. Começou pelas ferramentas mais rápidas de
 entregar — quanto vale o próprio trabalho — e a visão final é um **portal gratuito agregador de vagas de
@@ -31,8 +31,10 @@ Ver `README.md` para a estrutura de pastas completa, como rodar localmente e com
 ## Design — regra importante
 
 **Paleta é negociável, o estilo de componente não é (a menos que peçam explicitamente).** O visual atual
-é: tipografia serif (Georgia/Iowan Old Style) nos títulos, fundo neutro morno tipo "ledger", cards
-arredondados (~10px) com sombra suave, barra de filtros sticky, tudo em CSS próprio (sem Tailwind).
+é: tipografia Inter (Google Fonts) em todo o site — pesos maiores (600–800) nos títulos para compensar
+a ausência do serif que havia antes —, fundo neutro morno tipo "ledger", cards arredondados (~10px) com
+sombra suave, barra de filtros sticky, tudo em CSS próprio (sem Tailwind). Números tabulares continuam em
+fonte monoespaçada (`--font-mono`), sem trocar para Inter, para manter o alinhamento das colunas de R$.
 
 Já foi tentado trocar para Tailwind CDN + padrões de componente do gov.br (barra de identificação,
 breadcrumb, chips em pill, cards com ícone Lucide) — o usuário rejeitou explicitamente ("ficou feio") e
