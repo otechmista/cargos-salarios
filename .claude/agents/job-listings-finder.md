@@ -19,28 +19,77 @@ padrão dos existentes (`data/cargos.json`, `data/regioes.json`, etc.).
 
 ## Onde procurar
 
-Use `WebSearch` com combinações de termos + site, por exemplo:
+Pesquise sistematicamente nas **principais plataformas** abaixo a cada execução — não se limite a 1 ou 2
+fontes. A lista está organizada por escopo (generalista, focado em tech, remoto, freelance, por região, por
+cargo/nível), no mesmo espírito da lista de fontes salariais usada por `salary-data-updater`.
 
-- `site:linkedin.com/jobs vaga desenvolvedor [stack] Brasil`
-- `site:gupy.io vagas TI [cargo]`
-- `site:programathor.com.br vagas`
-- `site:trampos.co vagas tecnologia`
-- `site:infojobs.com.br vagas TI`
-- `remote OK "Brazil" OR "LATAM" developer` (para vagas remotas internacionais abertas a devs no Brasil)
-- `we work remotely developer Brazil`
+### Generalistas (todas as áreas e regiões)
+| Site | Como buscar |
+|---|---|
+| LinkedIn Empregos | `site:linkedin.com/jobs vaga [cargo] Brasil` |
+| Catho | `site:catho.com.br vagas [cargo]` |
+| InfoJobs | `site:infojobs.com.br vagas [cargo]` |
+| Indeed Brasil | `site:br.indeed.com vagas [cargo]` |
+| Vagas.com | `site:vagas.com.br [cargo]` |
 
-Cubra uma variedade de áreas e níveis — não traga só vagas de desenvolvedor sênior. Tente cobrir pelo
-menos: Desenvolvimento (algumas stacks diferentes), Dados, DevOps/Infra, Segurança, Produto (PO/Scrum
-Master), e alguma de Gestão/Liderança — espelhando as áreas já usadas em `data/cargos.json`
+### Focadas em tecnologia (ATS/agregadores mais usados por empresas de TI no Brasil)
+| Site | Como buscar |
+|---|---|
+| Gupy | `site:gupy.io vaga [cargo]` — o ATS mais usado por empresas de tech no Brasil; a maior fonte isolada |
+| Programathor | `site:programathor.com.br vagas [cargo ou área]` — forte em dev |
+| GeekHunter | `site:geekhunter.com.br vagas [cargo]` |
+| Revelo | `site:revelo.com.br vagas [cargo]` |
+| Trampos.co | `site:trampos.co vagas [cargo]` |
+| 99jobs | `site:99jobs.com vagas [cargo]` |
+
+### Remoto (Brasil e internacional aberto a devs no Brasil)
+| Site | Como buscar |
+|---|---|
+| Remotar | `site:remotar.com.br [cargo]` — 100% vagas remotas no Brasil |
+| RemoteOK | `remoteok.com [cargo] Brazil OR LATAM` |
+| We Work Remotely | `weworkremotely.com developer Brazil` |
+| Himalayas | `himalayas.app [cargo] Brazil` |
+| Torre | `torre.ai [cargo] remote Brazil` |
+
+### Freelance / PJ pontual
+| Site | Como buscar |
+|---|---|
+| Workana | `site:workana.com [cargo]` |
+| 99Freelas | `site:99freelas.com.br [cargo]` |
+
+### Por região (principais polos de tecnologia do Brasil)
+| Região | Como buscar |
+|---|---|
+| São Paulo / Campinas | `site:linkedin.com/jobs [cargo] São Paulo` — maior concentração de vagas do país |
+| Rio de Janeiro | `site:linkedin.com/jobs [cargo] Rio de Janeiro` |
+| Recife/PE (Porto Digital) | `Porto Digital vagas [cargo]` ou `site:linkedin.com/jobs [cargo] Recife` |
+| Florianópolis/SC (polo ACATE) | `ACATE vagas [cargo]` ou `site:linkedin.com/jobs [cargo] Florianópolis` |
+| Belo Horizonte/MG | `site:linkedin.com/jobs [cargo] Belo Horizonte` |
+| Distrito Federal (polo gov/tech) | `site:linkedin.com/jobs [cargo] Brasília` |
+| Demais regiões / 100% remoto | use as fontes de "Remoto" acima em vez de filtrar por cidade |
+
+### Por cargo/nível
+| Perfil | Onde procurar |
+|---|---|
+| Executivos (CIO/CTO/CSO/Head) | `site:michaelpage.com.br vagas [cargo]`, `site:roberthalf.com/br vagas [cargo]`, LinkedIn com filtro de senioridade |
+| Júnior / estágio / primeiro emprego | Revelo, Programathor, Gupy com `júnior` ou `estágio` no termo |
+| Dados, DevOps, Segurança, Arquitetura | Gupy e LinkedIn com o nome exato do cargo (ver rótulos de área abaixo) |
+| Produto (PO, Scrum Master) | Gupy, LinkedIn, Trampos.co |
+
+Cubra uma variedade de áreas e níveis em cada rodada — não traga só vagas de desenvolvedor sênior. Tente
+cobrir pelo menos: Desenvolvimento (algumas stacks diferentes), Dados, DevOps/Infra, Segurança, Produto
+(PO/Scrum Master) e alguma de Gestão/Liderança — espelhando as áreas já usadas em `data/cargos.json`
 (`Desenvolvimento`, `Dados`, `DevOps/Infra`, `Segurança`, `Arquitetura`, `Produto`, `Gestão/Liderança`).
-Misture níveis (Júnior, Pleno, Sênior) e modalidades (Remoto, Híbrido, Presencial).
+Misture níveis (Júnior, Pleno, Sênior) e modalidades (Remoto, Híbrido, Presencial), e tente puxar pelo
+menos uma vaga de fora do eixo SP/RJ quando possível (regionalizar o resultado é parte do objetivo).
 
 Use `WebFetch` na página da vaga quando precisar confirmar o título exato, a empresa, o local/modalidade
 ou para escrever a descrição curta — não invente detalhes que não conseguiu confirmar na fonte.
 
-**Meta de coleta:** entre 20 e 40 vagas reais e atualmente abertas nesta rodada. Se uma fonte estiver
-bloqueando o acesso (login obrigatório, captcha, etc.), pule para a próxima — não é preciso vencer todas
-as fontes listadas acima, só ter diversidade suficiente no resultado.
+**Meta de coleta:** entre 20 e 40 vagas reais e atualmente abertas nesta rodada, tocando pelo menos 4
+plataformas diferentes das listas acima (não só uma). Se uma fonte estiver bloqueando o acesso (login
+obrigatório, captcha, etc.), pule para a próxima — não é preciso vencer todas as fontes listadas, só ter
+diversidade suficiente de plataforma, região, área e nível no resultado.
 
 ## Schema de `data/vagas.json`
 

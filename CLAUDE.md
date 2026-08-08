@@ -1,32 +1,43 @@
 # Emprega TI
 
-Ajudar profissionais de TI a se empregar melhor no Brasil. Começou pelas ferramentas mais rápidas de
-entregar — quanto vale o próprio trabalho — e a visão final é um **portal gratuito agregador de vagas de
-TI** espalhadas pela internet (LinkedIn, Gupy, sites de empresas, outros agregadores), buscáveis num só
-lugar. Mantenha essa direção em mente ao propor próximos passos ou ao decidir modelagem de dados — por
-exemplo, o formato `data/*.json` por domínio já foi pensado para comportar um domínio `vagas` no futuro.
+Ajudar profissionais de TI a se empregar melhor no Brasil. Portal gratuito — hoje e para sempre. Começou
+pelas ferramentas mais rápidas de entregar — quanto vale o próprio trabalho — e já tem a primeira versão
+do **agregador de vagas de TI** espalhadas pela internet (LinkedIn, Gupy, Programathor, Remotar). Mantenha
+essa direção em mente ao propor próximos passos ou ao decidir modelagem de dados — o formato `data/*.json`
+por domínio já comporta `vagas` e foi pensado para comportar mais domínios (ex.: `recursos` de
+capacitação) da mesma forma.
 
 ## Estado atual
 
-Site estático (HTML/CSS/JS puro, sem build/bundler, sem framework), duas páginas:
+Site estático (HTML/CSS/JS puro, sem build/bundler, sem framework), 4 páginas:
 
-- `index.html` — tabela cruzada de cargos e salários de TI, do estágio ao C-level, CLT x PJ, com faixas
+- `index.html` — home do portal: hero, cards de entrada para as 3 ferramentas (com estatísticas ao vivo) e
+  prévia de vagas em destaque.
+- `cargos.html` — tabela cruzada de cargos e salários de TI, do estágio ao C-level, CLT x PJ, com faixas
   estimadas por estado/região.
 - `calculadora.html` — calculadora que converte salário entre CLT e PJ nos dois sentidos (13º, férias
   +1/3, FGTS, INSS, IRRF, Simples Nacional, INSS pró-labore, contador).
+- `vagas.html` — busca de vagas de TI (área, nível, modalidade), sempre linkando para a vaga original.
 
 Ver `README.md` para a estrutura de pastas completa, como rodar localmente e como publicar. Resumo:
 
-- `data/*.json` — fonte única da verdade dos dados (cargos, regiões, executivos, referências), um
+- `data/*.json` — fonte única da verdade dos dados (cargos, regiões, executivos, referências, vagas), um
   domínio por arquivo, schema `{ fields, rows, index, lastSync, sources }`.
-- `scripts/data-loader.js` — busca os JSONs via `fetch` e monta as estruturas usadas pelas páginas.
-- `scripts/salary-table.js` / `scripts/reference-table.js` — Web Components (`customElements.define`,
-  Shadow DOM) que renderizam as tabelas.
+- `scripts/data-loader.js` — busca os JSONs via `fetch` (`loadCargosData()`, `loadVagasData()`) e monta as
+  estruturas usadas pelas páginas.
+- `scripts/salary-table.js` / `scripts/reference-table.js` / `scripts/job-listings.js` — Web Components
+  (`customElements.define`, Shadow DOM) que renderizam tabelas/cards a partir de `rows`+`index`.
 - `scripts/calculadora.js` — lógica de cálculo (INSS/IRRF/Simples Nacional) da calculadora.
 - `assets/styles.css` / `assets/calculadora.css` — CSS próprio (sem framework), tokens via custom
-  properties (`--accent`, `--clt`, `--pj`, etc.), tema claro/escuro via `prefers-color-scheme`.
+  properties (`--accent`, `--clt`, `--pj`, etc.), tema claro/escuro via `prefers-color-scheme`, nav
+  compartilhada (`.site-nav`) e cards de portal (`.tool-cards`) usados pelas 4 páginas.
+- Ícones: Lucide via CDN (`unpkg.com/lucide`), `data-lucide="..."` + `window.lucide.createIcons()`, só em
+  **light DOM** (header, nav, cards, footers) — o Lucide não enxerga dentro de Shadow DOM, então o
+  conteúdo dinâmico de `<salary-table>`/`<reference-table>`/`<job-listings>` fica sem ícones de propósito.
 - `.github/workflows/deploy.yml` — publica no GitHub Pages a cada push em `main`.
-- `.claude/agents/salary-data-updater.md` — subagent que pesquisa e atualiza `data/*.json`.
+- `.claude/agents/` — `salary-data-updater.md` (cargos/regiões/executivos/referências),
+  `job-listings-finder.md` (vagas), `learning-resources-finder.md` (cursos/dicas/tendências, domínio
+  `recursos` ainda não gerado), `fullstack-developer.md` (implementação de novas funcionalidades).
 
 ## Design — regra importante
 

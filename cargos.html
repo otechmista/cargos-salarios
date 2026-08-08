@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Emprega TI — Cargos & Salários em TI no Brasil</title>
+<meta name="description" content="Emprega TI: tabela cruzada de cargos e salários de TI no Brasil, do estágio ao C-level, com CLT x PJ e faixas estimadas por estado. Fontes: Robert Half, Michael Page, Glassdoor, Nerdin, Código Fonte TV." />
+<meta name="theme-color" content="#1351b4" />
+<link rel="icon" href="assets/favicon-cargos.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/styles.css" />
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+<!-- Open Graph / Twitter Card — troque og:url pela URL final do GitHub Pages após publicar -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Emprega TI" />
+<meta property="og:title" content="Emprega TI — Cargos & Salários em TI no Brasil" />
+<meta property="og:description" content="Do estágio ao C-level: faixas salariais cruzadas de várias fontes, com comparação CLT x PJ e estimativa por estado." />
+<meta property="og:image" content="assets/og-image.svg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:url" content="https://SEU-USUARIO.github.io/SEU-REPOSITORIO/cargos.html" />
+<meta property="og:locale" content="pt_BR" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Emprega TI — Cargos & Salários em TI no Brasil" />
+<meta name="twitter:description" content="Do estágio ao C-level: faixas salariais cruzadas de várias fontes, com comparação CLT x PJ e estimativa por estado." />
+<meta name="twitter:image" content="assets/og-image.svg" />
+</head>
+<body>
+
+<div class="wrap">
+  <nav class="site-nav" aria-label="Navegação principal">
+    <a href="index.html" class="brand"><i data-lucide="compass" class="icon" width="18" height="18"></i> Emprega TI</a>
+    <div class="site-nav-links">
+      <a href="cargos.html" aria-current="page">Cargos & Salários</a>
+      <a href="calculadora.html">Calculadora CLT × PJ</a>
+      <a href="vagas.html">Vagas</a>
+    </div>
+  </nav>
+
+  <header class="page">
+    <span class="eyebrow"><i data-lucide="landmark" class="icon" width="14" height="14"></i> Mercado de TI · Brasil</span>
+    <h1>Cargos &amp; salários em TI, do estágio ao C-level</h1>
+    <p class="subtitle">
+      Dados cruzados de guias e pesquisas salariais públicas — Robert Half, Michael Page, Glassdoor,
+      Nerdin, Código Fonte TV e salario.com.br — organizados por área, senioridade, regime de contratação
+      (<strong style="color: var(--clt)">CLT</strong> x <strong style="color: var(--pj)">PJ</strong>) e estado/região.
+      O Emprega TI existe para ajudar você a negociar melhor e encontrar seu próximo emprego — é
+      100% gratuito, hoje e para sempre.
+    </p>
+    <span class="meta-line">valores brutos mensais em R$ · atualizado em 08/08/2026</span>
+  </header>
+
+  <div class="exec-grid" id="exec-grid"></div>
+
+  <div class="explainer">
+    <div>
+      <h3><span class="icon-badge icon-badge-clt small"><i data-lucide="briefcase" class="icon" width="16" height="16"></i></span> CLT</h3>
+      <p>Vínculo formal: carteira assinada, férias +1/3, 13º salário, FGTS, INSS e estabilidade jurídica. O valor bruto é menor, mas boa parte do custo de benefícios fica com a empresa.</p>
+    </div>
+    <div>
+      <h3><span class="icon-badge icon-badge-pj small"><i data-lucide="file-signature" class="icon" width="16" height="16"></i></span> PJ</h3>
+      <p>Contrato via CNPJ: bruto tipicamente 30–50% maior que o mesmo cargo em CLT, sem férias, 13º, FGTS ou estabilidade — quem abre mão desses direitos precisa provisioná-los por conta própria. Costuma compensar a partir de pleno/sênior, em propostas acima de ~R$ 7.000/mês.</p>
+    </div>
+  </div>
+
+  <salary-table id="salary-table"></salary-table>
+
+  <h2 class="section-heading"><i data-lucide="bar-chart-3" class="icon" width="20" height="20" style="color: var(--accent)"></i> Outras referências de mercado</h2>
+  <p class="section-note">
+    Dados agregados (medianas / percentis) que não separam CLT de PJ na fonte original, úteis como segundo ponto de comparação.
+  </p>
+  <reference-table id="reference-table"></reference-table>
+
+  <footer>
+    <h4><i data-lucide="link-2" class="icon" width="16" height="16"></i> Fontes consultadas (agosto/2026)</h4>
+    <ul>
+      <li><a href="https://www.roberthalf.com/br/pt/insights/guia-salarial/tecnologia" target="_blank" rel="noopener">Robert Half — Guia Salarial 2026, Tecnologia <i data-lucide="external-link" class="icon" width="13" height="13"></i></a></li>
+      <li><a href="https://www.michaelpage.com.br/recrutamento-e-selecao/tend%C3%AAncias-do-mercado/guia-salarial-2026-o-panorama-do-mercado-de-trabalho-no-brasil" target="_blank" rel="noopener">Michael Page — Guia Salarial 2026 <i data-lucide="external-link" class="icon" width="13" height="13"></i></a></li>
+      <li><a href="https://www.glassdoor.com.br/Sal%C3%A1rios/chief-technology-officer-cto-sal%C3%A1rio-SRCH_KO0,28.htm" target="_blank" rel="noopener">Glassdoor Brasil — Salários por cargo <i data-lucide="external-link" class="icon" width="13" height="13"></i></a></li>
+      <li><a href="https://www.nerdin.com.br/plano_de_cargos_e_salarios_ti.php" target="_blank" rel="noopener">Nerdin — Tabela de Cargos e Salários TI 2026 (CLT x PJ) <i data-lucide="external-link" class="icon" width="13" height="13"></i></a></li>
+      <li><a href="https://pesquisa.codigofonte.com.br/2026" target="_blank" rel="noopener">Código Fonte TV — Pesquisa Salarial de Programadores 2026 <i data-lucide="external-link" class="icon" width="13" height="13"></i></a></li>
+      <li><a href="https://www.salario.com.br/tabela-salarial/tecnologia-da-informacao/" target="_blank" rel="noopener">salario.com.br — Tabela Salarial, Tecnologia da Informação (base nacional e diferencial SP/RJ/DF) <i data-lucide="external-link" class="icon" width="13" height="13"></i></a></li>
+      <li><a href="https://br.aprender21.com/blog/carreira-desenvolvedor-salario-brasil" target="_blank" rel="noopener">Aprender21 — Salário de desenvolvedor por estado (índice de custo/mercado) <i data-lucide="external-link" class="icon" width="13" height="13"></i></a></li>
+      <li><a href="https://huntit.com.br/salario-de-desenvolvedor-senior-em-2026/" target="_blank" rel="noopener">HUNT IT — Salário de desenvolvedor sênior por stack e cidade <i data-lucide="external-link" class="icon" width="13" height="13"></i></a></li>
+    </ul>
+    <p>
+      Metodologia: valores brutos mensais em reais, antes de impostos. A base da tabela é nacional (Robert Half +
+      Nerdin 2026); as faixas por estado/região são <strong>estimativas</strong> obtidas aplicando um multiplicador
+      direcional sobre essa base — derivado do diferencial SP/RJ/DF reportado por salario.com.br, do índice de
+      custo/mercado por estado do Aprender21 e do efeito nivelador do trabalho remoto descrito pela HUNT IT — e não
+      medianas coletadas cargo a cargo em cada estado. Use como referência de negociação, não como piso ou teto
+      absoluto. Linhas sem uma das colunas CLT/PJ preenchida refletem dados agregados da fonte original, que não fez
+      essa distinção.
+    </p>
+  </footer>
+</div>
+
+<script type="module">
+  import { loadCargosData } from "./scripts/data-loader.js";
+  import "./scripts/salary-table.js";
+  import "./scripts/reference-table.js";
+
+  const fmt = (n) => (n == null ? "—" : "R$ " + n.toLocaleString("pt-BR"));
+  const scale = (n, mult) => (n == null ? null : Math.round((n * mult) / 100) * 100);
+  const EXEC_ICONS = { CIO: "network", CTO: "cpu", CSO: "shield-check" };
+
+  const { EXEC, REGIONS, ROWS, ROWS_INDEX, REF, meta } = await loadCargosData();
+
+  const execGrid = document.getElementById("exec-grid");
+  function renderExec(mult) {
+    execGrid.innerHTML = EXEC.map((e) => `
+      <div class="exec-card">
+        <div class="role"><span class="icon-badge small" style="margin-right:.4rem"><i data-lucide="${EXEC_ICONS[e.role] || "briefcase"}" class="icon" width="15" height="15"></i></span>${e.role}</div>
+        <div class="range">${fmt(scale(e.min, mult))} – ${fmt(scale(e.max, mult))}</div>
+        <div class="caption">${e.caption}</div>
+      </div>`).join("");
+    window.lucide?.createIcons();
+  }
+  renderExec(1);
+
+  const salaryTable = document.getElementById("salary-table");
+  salaryTable.rows = ROWS;
+  salaryTable.index = ROWS_INDEX;
+  salaryTable.regions = REGIONS;
+  salaryTable.addEventListener("region-change", (e) => renderExec(e.detail.mult));
+
+  document.getElementById("reference-table").rows = REF;
+
+  const metaLine = document.querySelector(".meta-line");
+  if (metaLine) metaLine.textContent = `valores brutos mensais em R$ · última sincronização dos dados: ${meta.cargos.lastSync}`;
+
+  window.lucide?.createIcons();
+</script>
+</body>
+</html>

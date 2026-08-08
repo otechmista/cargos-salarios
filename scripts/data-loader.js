@@ -38,3 +38,14 @@ export async function loadCargosData() {
     },
   };
 }
+
+export async function loadVagasData() {
+  const vagas = await loadDomain("vagas");
+  return {
+    // Tuplas — [titulo, empresa, area, nivel, modalidade, localizacao, descricao, link, fonte]
+    VAGAS: vagas.rows,
+    VAGAS_FIELDS: vagas.fields,
+    VAGAS_INDEX: vagas.index, // { byArea, byNivel, byModalidade: { valor: [i,...] } }
+    meta: { lastSync: vagas.lastSync, sources: vagas.sources },
+  };
+}

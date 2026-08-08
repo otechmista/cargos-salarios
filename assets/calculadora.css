@@ -8,7 +8,7 @@
 .card-head h2 { margin: 0; font-family: var(--font-display); font-weight: 700; font-size: 1.35rem; }
 .card.clt .card-head { border-top: 3px solid var(--clt); }
 .card.pj .card-head { border-top: 3px solid var(--pj); }
-.tag { font-family: var(--font-mono); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.2rem 0.55rem; border-radius: 999px; }
+/* .tag base rule mora em assets/styles.css (compartilhada com a home e vagas.html) */
 .card.clt .tag { color: var(--clt); background: var(--clt-bg); }
 .card.pj .tag { color: var(--pj); background: var(--pj-bg); }
 

@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#121513" />
+      <stop offset="1" stop-color="#0d1512" />
+    </linearGradient>
+    <linearGradient id="rule" x1="0" y1="0" x2="1200" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#6ea8f0" stop-opacity="0" />
+      <stop offset="0.5" stop-color="#6ea8f0" />
+      <stop offset="1" stop-color="#6ea8f0" stop-opacity="0" />
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)" />
+
+  <g opacity="0.10" stroke="#e7ece9" stroke-width="1">
+    <line x1="760" y1="60" x2="760" y2="570" />
+    <line x1="880" y1="60" x2="880" y2="570" />
+    <line x1="1000" y1="60" x2="1000" y2="570" />
+    <line x1="1120" y1="60" x2="1120" y2="570" />
+    <line x1="740" y1="120" x2="1160" y2="120" />
+    <line x1="740" y1="200" x2="1160" y2="200" />
+    <line x1="740" y1="280" x2="1160" y2="280" />
+    <line x1="740" y1="360" x2="1160" y2="360" />
+    <line x1="740" y1="440" x2="1160" y2="440" />
+    <line x1="740" y1="520" x2="1160" y2="520" />
+  </g>
+
+  <text x="80" y="72" font-family="'Inter', -apple-system, 'Segoe UI', sans-serif" font-weight="800" font-size="30" letter-spacing="-0.5" fill="#ffffff">Emprega TI</text>
+  <text x="80" y="118" font-family="ui-monospace, 'SF Mono', 'Cascadia Code', Consolas, monospace" font-size="22" letter-spacing="3" fill="#6ea8f0">MERCADO DE TI · BRASIL</text>
+
+  <text x="78" y="225" font-family="'Inter', -apple-system, 'Segoe UI', sans-serif" font-weight="800" font-size="66" letter-spacing="-1" fill="#e7ece9">Vagas de TI</text>
+  <text x="78" y="300" font-family="'Inter', -apple-system, 'Segoe UI', sans-serif" font-weight="800" font-size="66" letter-spacing="-1" fill="#e7ece9">abertas agora</text>
+
+  <rect x="80" y="330" width="720" height="2" fill="url(#rule)" />
+
+  <text x="80" y="380" font-family="-apple-system, 'Segoe UI', sans-serif" font-size="27" fill="#9aa39e">Busca gratuita · filtre por área, nível e modalidade</text>
+
+  <text x="80" y="440" font-family="-apple-system, 'Segoe UI', sans-serif" font-size="24" fill="#e7ece9">LinkedIn · Gupy · Programathor · Remotar</text>
+
+  <text x="80" y="560" font-family="ui-monospace, 'SF Mono', Consolas, monospace" font-size="19" fill="#565f5b">Sempre link direto para a vaga original · sem cadastro no Emprega TI</text>
+</svg>

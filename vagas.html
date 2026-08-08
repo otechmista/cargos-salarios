@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Emprega TI — Vagas de TI no Brasil</title>
+<meta name="description" content="Busque vagas reais de TI no Brasil, agregadas de LinkedIn, Gupy, Programathor e outras fontes, filtráveis por área, nível e modalidade (remoto, híbrido, presencial)." />
+<meta name="theme-color" content="#1351b4" />
+<link rel="icon" href="assets/favicon-vagas.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/styles.css" />
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+<!-- Open Graph / Twitter Card — troque og:url pela URL final do GitHub Pages após publicar -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Emprega TI" />
+<meta property="og:title" content="Emprega TI — Vagas de TI no Brasil" />
+<meta property="og:description" content="Vagas reais de TI agregadas de LinkedIn, Gupy, Programathor e outras fontes, filtráveis por área, nível e modalidade." />
+<meta property="og:image" content="assets/og-image-vagas.svg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:url" content="https://SEU-USUARIO.github.io/SEU-REPOSITORIO/vagas.html" />
+<meta property="og:locale" content="pt_BR" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Emprega TI — Vagas de TI no Brasil" />
+<meta name="twitter:description" content="Vagas reais de TI agregadas de LinkedIn, Gupy, Programathor e outras fontes, filtráveis por área, nível e modalidade." />
+<meta name="twitter:image" content="assets/og-image-vagas.svg" />
+</head>
+<body>
+
+<div class="wrap">
+  <nav class="site-nav" aria-label="Navegação principal">
+    <a href="index.html" class="brand"><i data-lucide="compass" class="icon" width="18" height="18"></i> Emprega TI</a>
+    <div class="site-nav-links">
+      <a href="cargos.html">Cargos & Salários</a>
+      <a href="calculadora.html">Calculadora CLT × PJ</a>
+      <a href="vagas.html" aria-current="page">Vagas</a>
+    </div>
+  </nav>
+
+  <header class="page">
+    <span class="eyebrow"><i data-lucide="search" class="icon" width="14" height="14"></i> Mercado de TI · Brasil</span>
+    <h1>Vagas de TI abertas agora</h1>
+    <p class="subtitle">
+      Vagas reais agregadas de LinkedIn, Gupy, Programathor, Remotar e outras plataformas — filtre por
+      área, nível e modalidade, ou busque por título/empresa. Cada card leva direto para a vaga original.
+      100% gratuito, sem cadastro.
+    </p>
+    <span class="meta-line" id="meta-line">carregando…</span>
+  </header>
+
+  <job-listings id="job-listings"></job-listings>
+
+  <footer>
+    <h4><i data-lucide="link-2" class="icon" width="16" height="16"></i> Fontes agregadas</h4>
+    <ul>
+      <li><a href="https://www.linkedin.com/jobs/" target="_blank" rel="noopener">LinkedIn Empregos <i data-lucide="external-link" class="icon" width="13" height="13"></i></a></li>
+      <li><a href="https://gupy.io/" target="_blank" rel="noopener">Gupy <i data-lucide="external-link" class="icon" width="13" height="13"></i></a></li>
+      <li><a href="https://programathor.com.br/" target="_blank" rel="noopener">Programathor <i data-lucide="external-link" class="icon" width="13" height="13"></i></a></li>
+      <li><a href="https://remotar.com.br/" target="_blank" rel="noopener">Remotar <i data-lucide="external-link" class="icon" width="13" height="13"></i></a></li>
+    </ul>
+    <p>
+      O Emprega TI agrega vagas públicas e sempre linka para a página original da vaga — não hospedamos
+      candidaturas nem coletamos seus dados. A lista é atualizada periodicamente e pode conter vagas que
+      já fecharam entre uma sincronização e outra; se um link não abrir mais, é sinal de que a vaga
+      encerrou. Áreas e níveis seguem a mesma classificação usada na página de
+      <a href="cargos.html">Cargos &amp; Salários</a>.
+    </p>
+  </footer>
+</div>
+
+<script type="module">
+  import { loadVagasData } from "./scripts/data-loader.js";
+  import "./scripts/job-listings.js";
+
+  const { VAGAS, VAGAS_INDEX, meta } = await loadVagasData();
+
+  const jobListings = document.getElementById("job-listings");
+  jobListings.rows = VAGAS;
+  jobListings.index = VAGAS_INDEX;
+
+  const metaLine = document.getElementById("meta-line");
+  if (metaLine) metaLine.textContent = `${VAGAS.length} vagas · última sincronização: ${meta.lastSync}`;
+
+  window.lucide?.createIcons();
+</script>
+</body>
+</html>
