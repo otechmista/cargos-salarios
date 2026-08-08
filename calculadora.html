@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Calculadora CLT x PJ — Conversão de Salário TI Brasil</title>
+<meta name="description" content="Converta salário entre CLT e PJ considerando 13º, férias remuneradas, FGTS, INSS, IRRF, Simples Nacional e contador — com valores equivalentes calculados nos dois sentidos." />
+<meta name="theme-color" content="#0f6e5c" />
+<link rel="icon" href="assets/favicon-calculadora.svg" />
+<link rel="stylesheet" href="assets/styles.css" />
+<link rel="stylesheet" href="assets/calculadora.css" />
+
+<!-- Open Graph / Twitter Card — troque og:url pela URL final do GitHub Pages após publicar -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Cargos & Salários em TI — Brasil" />
+<meta property="og:title" content="Calculadora CLT x PJ — Conversão de Salário TI Brasil" />
+<meta property="og:description" content="Converta salário entre CLT e PJ considerando 13º, férias remuneradas, FGTS, INSS, IRRF, Simples Nacional e contador." />
+<meta property="og:image" content="assets/og-image-calculadora.svg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:url" content="https://SEU-USUARIO.github.io/SEU-REPOSITORIO/calculadora.html" />
+<meta property="og:locale" content="pt_BR" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Calculadora CLT x PJ — Conversão de Salário TI Brasil" />
+<meta name="twitter:description" content="Converta salário entre CLT e PJ considerando 13º, férias remuneradas, FGTS, INSS, IRRF, Simples Nacional e contador." />
+<meta name="twitter:image" content="assets/og-image-calculadora.svg" />
+</head>
+<body>
+
+<div class="wrap">
+  <nav class="crumb"><a href="index.html">← Tabela de cargos e salários</a></nav>
+
+  <header class="page">
+    <span class="eyebrow">Mercado de TI · Brasil</span>
+    <h1>Calculadora CLT × PJ</h1>
+    <p class="subtitle">
+      Converte o salário entre os dois regimes nos dois sentidos, considerando 13º, férias remuneradas
+      (+1/3), FGTS e INSS/IRRF do lado CLT — e Simples Nacional (DAS), INSS pró-labore e contador do lado PJ,
+      com opção de marcar se o contrato PJ paga férias e/ou 13º.
+    </p>
+    <span class="meta-line">tabelas INSS, IRRF e Simples Nacional (Anexo III) de 2026 · valores mensais brutos em R$</span>
+  </header>
+
+  <div class="cards">
+    <div class="card clt">
+      <div class="card-head">
+        <h2>CLT</h2>
+        <span class="tag">carteira assinada</span>
+      </div>
+      <div class="card-body">
+        <div class="field big-input">
+          <label for="clt-gross">Salário bruto mensal</label>
+          <div class="money-input"><span>R$</span><input id="clt-gross" type="number" min="0" step="50" value="8000" /></div>
+        </div>
+
+        <details class="adv">
+          <summary>Ajustes avançados</summary>
+          <div class="adv-grid">
+            <div class="field">
+              <label for="clt-extra">Benefícios extras (VR/VA, saúde), R$/mês</label>
+              <input id="clt-extra" type="number" min="0" step="10" value="0" />
+            </div>
+          </div>
+        </details>
+
+        <div class="breakdown" id="clt-breakdown"></div>
+
+        <div class="equiv">
+          <div class="label">Equivalente em PJ (mesmo líquido anual)</div>
+          <div class="value" id="clt-to-pj">—</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card pj">
+      <div class="card-head">
+        <h2>PJ</h2>
+        <span class="tag">CNPJ / nota fiscal</span>
+      </div>
+      <div class="card-body">
+        <div class="field big-input">
+          <label for="pj-gross">Faturamento bruto mensal</label>
+          <div class="money-input"><span>R$</span><input id="pj-gross" type="number" min="0" step="50" value="10000" /></div>
+        </div>
+
+        <div class="checks">
+          <label class="chk">
+            <input type="checkbox" id="pj-ferias" />
+            <span class="chk-label"><strong>Contrato paga férias remuneradas</strong><span>+1 fatura extra (com 1/3) uma vez por ano — incomum em PJ, mas alguns contratos incluem</span></span>
+          </label>
+          <label class="chk">
+            <input type="checkbox" id="pj-decimo" />
+            <span class="chk-label"><strong>Contrato paga 13º salário</strong><span>+1 fatura extra uma vez por ano</span></span>
+          </label>
+        </div>
+
+        <details class="adv">
+          <summary>Ajustes avançados (Simples Nacional, pró-labore, contador)</summary>
+          <div class="adv-grid">
+            <div class="field">
+              <label for="pj-das">Alíquota efetiva do DAS (%)</label>
+              <input id="pj-das" type="number" min="0" max="33" step="0.1" value="6" />
+            </div>
+            <div class="field">
+              <label for="pj-inss">INSS pró-labore, R$/mês</label>
+              <input id="pj-inss" type="number" min="0" step="10" value="178.31" />
+            </div>
+            <div class="field">
+              <label for="pj-contador">Contador, R$/mês</label>
+              <input id="pj-contador" type="number" min="0" step="10" value="200" />
+            </div>
+            <div class="field">
+              <label for="pj-extra">Benefícios pagos pela contratante, R$/mês</label>
+              <input id="pj-extra" type="number" min="0" step="10" value="0" />
+            </div>
+          </div>
+        </details>
+
+        <div class="breakdown" id="pj-breakdown"></div>
+
+        <div class="equiv">
+          <div class="label">Equivalente em CLT (mesmo líquido anual)</div>
+          <div class="value" id="pj-to-clt">—</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="summary-bar" id="summary-bar"></div>
+
+  <h2 class="section-heading">Como é calculado</h2>
+  <p class="section-note">
+    <strong style="color: var(--clt)">CLT</strong>: desconta INSS (tabela progressiva 2026, teto R$ 8.475,55) e IRRF
+    (tabela progressiva 2026, com isenção total até R$ 5.000 e faixa de transição decrescente entre R$ 5.000 e
+    R$ 7.350 — aproximada aqui por interpolação linear, já que o redutor oficial não é uma reta perfeita).
+    13º e férias +1/3 entram como um pagamento líquido extra cada, uma vez por ano. FGTS (8%) é somado à parte —
+    é patrimônio do trabalhador, mas não é líquido disponível no mês a mês.
+  </p>
+  <p class="section-note">
+    <strong style="color: var(--pj)">PJ</strong>: desconta o DAS do Simples Nacional (alíquota efetiva que você
+    informa — a maioria dos PJs individuais de TI fica na 1ª faixa do Anexo III, até R$ 180 mil/ano, ~6%), o INSS
+    sobre o pró-labore e o contador. Férias e 13º só entram se você marcar as caixas — por padrão um contrato PJ
+    não inclui nenhum dos dois.
+  </p>
+  <p class="section-note">
+    Os campos "Equivalente" fazem o caminho inverso: pegam o líquido anual total de um lado e calculam por
+    aproximação numérica qual bruto mensal do outro regime chega ao mesmo líquido, com as regras marcadas.
+  </p>
+
+  <footer>
+    <h4>Fontes e observações</h4>
+    <ul>
+      <li><a href="https://www.contabilizei.com.br/contabilidade-online/tabela-inss/" target="_blank" rel="noopener">Tabela INSS 2026 — Contabilizei</a></li>
+      <li><a href="https://www.contabilizei.com.br/contabilidade-online/tabela-imposto-de-renda/" target="_blank" rel="noopener">Tabela IRRF 2026 — Contabilizei</a></li>
+      <li><a href="https://www.gov.br/receitafederal/pt-br/assuntos/noticias/2025/dezembro/receita-federal-orienta-fontes-pagadoras-e-contribuintes-a-calcular-a-reducao-do-imposto-de-renda-a-partir-de-1o-de-janeiro-de-2026" target="_blank" rel="noopener">Receita Federal — redução do IR a partir de jan/2026 (Lei 15.270/2025)</a></li>
+      <li><a href="https://www.contabilizei.com.br/contabilidade-online/anexo-3-simples-nacional/" target="_blank" rel="noopener">Anexo III do Simples Nacional 2026 — Contabilizei</a></li>
+    </ul>
+    <p>
+      Calculadora educativa e simplificada — não substitui orientação de um contador. Não considera dependentes,
+      pensão alimentícia, vale-transporte, Fator R (Anexo III x V), 13º/férias proporcionais em desligamento,
+      nem particularidades do seu contrato. Use como referência de negociação, não como folha de pagamento oficial.
+    </p>
+  </footer>
+</div>
+
+<script type="module" src="scripts/calculadora.js"></script>
+</body>
+</html>

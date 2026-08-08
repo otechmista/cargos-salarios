@@ -6,14 +6,15 @@
 <title>Cargos & Salários em TI — Brasil 2026</title>
 <meta name="description" content="Tabela cruzada de cargos e salários de TI no Brasil, do estágio ao C-level, com CLT x PJ e faixas estimadas por estado. Fontes: Robert Half, Michael Page, Glassdoor, Nerdin, Código Fonte TV." />
 <meta name="theme-color" content="#0f6e5c" />
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%92%BC%3C/text%3E%3C/svg%3E" />
+<link rel="icon" href="assets/favicon-cargos.svg" />
+<link rel="stylesheet" href="assets/styles.css" />
 
 <!-- Open Graph / Twitter Card — troque og:url pela URL final do GitHub Pages após publicar -->
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Cargos & Salários em TI — Brasil" />
 <meta property="og:title" content="Cargos & Salários em TI — Brasil 2026" />
 <meta property="og:description" content="Do estágio ao C-level: faixas salariais cruzadas de várias fontes, com comparação CLT x PJ e estimativa por estado." />
-<meta property="og:image" content="og-image.svg" />
+<meta property="og:image" content="assets/og-image.svg" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta property="og:url" content="https://SEU-USUARIO.github.io/SEU-REPOSITORIO/" />
@@ -21,332 +22,13 @@
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Cargos & Salários em TI — Brasil 2026" />
 <meta name="twitter:description" content="Do estágio ao C-level: faixas salariais cruzadas de várias fontes, com comparação CLT x PJ e estimativa por estado." />
-<meta name="twitter:image" content="og-image.svg" />
-
-<style>
-  :root {
-    --bg: #f4f6f4;
-    --surface: #ffffff;
-    --surface-2: #eceee9;
-    --ink: #1c211f;
-    --ink-dim: #565f5b;
-    --border: #d8dcd6;
-    --accent: #0f6e5c;
-    --accent-ink: #ffffff;
-    --clt: #8a5f13;
-    --clt-bg: rgba(168, 121, 26, 0.12);
-    --pj: #2f5fb0;
-    --pj-bg: rgba(47, 95, 176, 0.12);
-    --shadow: 0 1px 2px rgba(20, 30, 25, 0.06), 0 4px 16px rgba(20, 30, 25, 0.04);
-
-    --font-display: Georgia, "Iowan Old Style", "Palatino Linotype", "Times New Roman", serif;
-    --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-    --font-mono: ui-monospace, "SF Mono", "Cascadia Code", "Consolas", monospace;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: #121513;
-      --surface: #181c1a;
-      --surface-2: #1f2422;
-      --ink: #e7ece9;
-      --ink-dim: #9aa39e;
-      --border: #2b322e;
-      --accent: #3fc0a0;
-      --accent-ink: #06231d;
-      --clt: #dba640;
-      --clt-bg: rgba(219, 166, 64, 0.16);
-      --pj: #7ba1ef;
-      --pj-bg: rgba(123, 161, 239, 0.16);
-      --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 4px 20px rgba(0, 0, 0, 0.35);
-    }
-  }
-  :root[data-theme="dark"] {
-    --bg: #121513;
-    --surface: #181c1a;
-    --surface-2: #1f2422;
-    --ink: #e7ece9;
-    --ink-dim: #9aa39e;
-    --border: #2b322e;
-    --accent: #3fc0a0;
-    --accent-ink: #06231d;
-    --clt: #dba640;
-    --clt-bg: rgba(219, 166, 64, 0.16);
-    --pj: #7ba1ef;
-    --pj-bg: rgba(123, 161, 239, 0.16);
-    --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 4px 20px rgba(0, 0, 0, 0.35);
-  }
-  :root[data-theme="light"] {
-    --bg: #f4f6f4;
-    --surface: #ffffff;
-    --surface-2: #eceee9;
-    --ink: #1c211f;
-    --ink-dim: #565f5b;
-    --border: #d8dcd6;
-    --accent: #0f6e5c;
-    --accent-ink: #ffffff;
-    --clt: #8a5f13;
-    --clt-bg: rgba(168, 121, 26, 0.12);
-    --pj: #2f5fb0;
-    --pj-bg: rgba(47, 95, 176, 0.12);
-  }
-
-  * { box-sizing: border-box; }
-  html, body { margin: 0; padding: 0; }
-  body {
-    background: var(--bg);
-    color: var(--ink);
-    font-family: var(--font-body);
-    line-height: 1.5;
-    -webkit-font-smoothing: antialiased;
-  }
-  a { color: var(--accent); }
-  ::selection { background: var(--accent); color: var(--accent-ink); }
-
-  .wrap {
-    max-width: 1180px;
-    margin: 0 auto;
-    padding: 2.5rem 1.5rem 5rem;
-  }
-
-  header.page {
-    display: flex;
-    flex-direction: column;
-    gap: 0.9rem;
-    padding-bottom: 1.75rem;
-    margin-bottom: 1.75rem;
-    border-bottom: 1px solid var(--border);
-  }
-  .eyebrow {
-    font-family: var(--font-mono);
-    font-size: 0.78rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--accent);
-  }
-  h1 {
-    font-family: var(--font-display);
-    font-weight: 400;
-    font-size: clamp(1.9rem, 4vw, 2.7rem);
-    margin: 0;
-    text-wrap: balance;
-    letter-spacing: -0.01em;
-  }
-  .subtitle {
-    max-width: 62ch;
-    color: var(--ink-dim);
-    font-size: 1.02rem;
-  }
-  .meta-line {
-    font-family: var(--font-mono);
-    font-size: 0.8rem;
-    color: var(--ink-dim);
-  }
-
-  /* Executive summary cards */
-  .exec-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-    gap: 0.9rem;
-    margin-bottom: 2rem;
-  }
-  .exec-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 1.1rem 1.2rem;
-    box-shadow: var(--shadow);
-  }
-  .exec-card .role {
-    font-family: var(--font-display);
-    font-size: 1.15rem;
-  }
-  .exec-card .range {
-    font-family: var(--font-mono);
-    font-variant-numeric: tabular-nums;
-    font-size: 1.05rem;
-    margin-top: 0.4rem;
-    color: var(--accent);
-  }
-  .exec-card .caption {
-    font-size: 0.78rem;
-    color: var(--ink-dim);
-    margin-top: 0.35rem;
-  }
-
-  /* CLT x PJ explainer */
-  .explainer {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1px;
-    background: var(--border);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    overflow: hidden;
-    margin-bottom: 2.25rem;
-  }
-  .explainer > div {
-    background: var(--surface);
-    padding: 1.1rem 1.3rem;
-  }
-  .explainer h3 {
-    margin: 0 0 0.4rem;
-    font-family: var(--font-body);
-    font-size: 0.95rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-  .explainer p { margin: 0; color: var(--ink-dim); font-size: 0.92rem; }
-  .dot { width: 0.6rem; height: 0.6rem; border-radius: 50%; display: inline-block; }
-  .dot.clt { background: var(--clt); }
-  .dot.pj { background: var(--pj); }
-  @media (max-width: 640px) { .explainer { grid-template-columns: 1fr; } }
-
-  /* Filter bar */
-  .filters {
-    position: sticky;
-    top: 0;
-    z-index: 5;
-    background: var(--bg);
-    padding: 0.9rem 0;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.6rem;
-    align-items: center;
-    border-bottom: 1px solid var(--border);
-    margin-bottom: 1.1rem;
-  }
-  #search {
-    flex: 1 1 220px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    color: var(--ink);
-    border-radius: 8px;
-    padding: 0.55rem 0.8rem;
-    font-family: var(--font-body);
-    font-size: 0.92rem;
-  }
-  #region {
-    flex: 0 0 auto;
-    background: var(--surface);
-    border: 1px solid var(--accent);
-    color: var(--ink);
-    border-radius: 8px;
-    padding: 0.55rem 0.8rem;
-    font-family: var(--font-mono);
-    font-size: 0.82rem;
-    max-width: 260px;
-  }
-  #search:focus-visible, #region:focus-visible, .chip:focus-visible, summary:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
-  }
-  .region-note {
-    font-size: 0.8rem;
-    color: var(--ink-dim);
-    margin: -0.5rem 0 1.1rem;
-    max-width: 68ch;
-  }
-  .region-note strong { color: var(--ink); }
-  .chip-group { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-  .chip {
-    font-family: var(--font-mono);
-    font-size: 0.78rem;
-    padding: 0.4rem 0.7rem;
-    border-radius: 999px;
-    border: 1px solid var(--border);
-    background: var(--surface);
-    color: var(--ink-dim);
-    cursor: pointer;
-    user-select: none;
-  }
-  .chip[aria-pressed="true"] {
-    background: var(--accent);
-    border-color: var(--accent);
-    color: var(--accent-ink);
-  }
-  .result-count { font-family: var(--font-mono); font-size: 0.78rem; color: var(--ink-dim); margin-left: auto; }
-
-  /* Table */
-  .table-scroll { overflow-x: auto; border: 1px solid var(--border); border-radius: 10px; background: var(--surface); box-shadow: var(--shadow); }
-  table { border-collapse: collapse; width: 100%; min-width: 760px; font-size: 0.9rem; }
-  thead th {
-    background: var(--surface-2);
-    text-align: left;
-    font-family: var(--font-mono);
-    font-weight: 500;
-    font-size: 0.72rem;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: var(--ink-dim);
-    padding: 0.65rem 0.9rem;
-    border-bottom: 1px solid var(--border);
-    white-space: nowrap;
-  }
-  table.main-table thead th { position: sticky; top: 52px; }
-  th.num, td.num { text-align: right; }
-  tbody td {
-    padding: 0.6rem 0.9rem;
-    border-bottom: 1px solid var(--border);
-    vertical-align: middle;
-  }
-  tbody tr:last-child td { border-bottom: none; }
-  tbody tr:hover { background: var(--surface-2); }
-  td.num, .figure { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
-  .role-cell .cargo { font-weight: 600; }
-  .role-cell .area { display: block; font-size: 0.76rem; color: var(--ink-dim); }
-  .level-badge {
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    padding: 0.15rem 0.5rem;
-    border-radius: 5px;
-    border: 1px solid var(--border);
-    color: var(--ink-dim);
-    white-space: nowrap;
-  }
-  .figure.clt { color: var(--clt); }
-  .figure.pj { color: var(--pj); }
-  .diff { font-family: var(--font-mono); font-size: 0.82rem; }
-  .diff.up::before { content: "+"; }
-  .muted { color: var(--ink-dim); }
-  .src { font-size: 0.74rem; color: var(--ink-dim); white-space: nowrap; }
-  .empty-row td { text-align: center; padding: 2.2rem; color: var(--ink-dim); }
-
-  /* Secondary table */
-  .section-heading {
-    font-family: var(--font-display);
-    font-size: 1.4rem;
-    margin: 3rem 0 0.4rem;
-  }
-  .section-note { color: var(--ink-dim); font-size: 0.9rem; margin-bottom: 1rem; max-width: 68ch; }
-  .ref-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
-  .ref-table th {
-    text-align: left; font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase;
-    letter-spacing: 0.05em; color: var(--ink-dim); padding: 0.55rem 0.8rem; border-bottom: 1px solid var(--border);
-  }
-  .ref-table td { padding: 0.55rem 0.8rem; border-bottom: 1px solid var(--border); }
-  .ref-table td.num { font-family: var(--font-mono); font-variant-numeric: tabular-nums; text-align: right; }
-
-  footer {
-    margin-top: 3.5rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid var(--border);
-    font-size: 0.85rem;
-    color: var(--ink-dim);
-  }
-  footer h4 { color: var(--ink); font-size: 0.85rem; margin: 0 0 0.5rem; font-family: var(--font-body); }
-  footer ul { margin: 0 0 1.2rem; padding-left: 1.1rem; }
-  footer li { margin-bottom: 0.25rem; }
-
-  @media (prefers-reduced-motion: no-preference) {
-    tbody tr { transition: background 0.12s ease; }
-  }
-</style>
+<meta name="twitter:image" content="assets/og-image.svg" />
 </head>
 <body>
 
 <div class="wrap">
+  <nav class="crumb"><a href="calculadora.html">Calculadora CLT × PJ →</a></nav>
+
   <header class="page">
     <span class="eyebrow">Mercado de TI · Brasil</span>
     <h1>Cargos &amp; salários em TI, do estágio ao C-level</h1>
@@ -355,7 +37,7 @@
       Nerdin, Código Fonte TV e salario.com.br — organizados por área, senioridade, regime de contratação
       (<strong style="color: var(--clt)">CLT</strong> x <strong style="color: var(--pj)">PJ</strong>) e estado/região.
     </p>
-    <span class="meta-line">valores brutos mensais em R$ · atualizado em 07/08/2026</span>
+    <span class="meta-line">valores brutos mensais em R$ · atualizado em 08/08/2026</span>
   </header>
 
   <div class="exec-grid" id="exec-grid"></div>
@@ -371,43 +53,13 @@
     </div>
   </div>
 
-  <div class="filters">
-    <input id="search" type="search" placeholder="Buscar cargo (ex: Python, DBA, Product Owner)…" autocomplete="off" />
-    <select id="region" aria-label="Estado ou região"></select>
-    <div class="chip-group" id="area-chips"></div>
-    <div class="chip-group" id="level-chips"></div>
-    <span class="result-count" id="result-count"></span>
-  </div>
-  <p class="region-note" id="region-note"></p>
-
-  <div class="table-scroll">
-    <table class="main-table">
-      <thead>
-        <tr>
-          <th>Cargo</th>
-          <th>Nível</th>
-          <th class="num">CLT (R$/mês)</th>
-          <th class="num">PJ (R$/mês)</th>
-          <th class="num">Δ PJ vs CLT</th>
-          <th>Fonte</th>
-        </tr>
-      </thead>
-      <tbody id="table-body"></tbody>
-    </table>
-  </div>
+  <salary-table id="salary-table"></salary-table>
 
   <h2 class="section-heading">Outras referências de mercado</h2>
   <p class="section-note">
     Dados agregados (medianas / percentis) que não separam CLT de PJ na fonte original, úteis como segundo ponto de comparação.
   </p>
-  <div class="table-scroll">
-    <table class="ref-table">
-      <thead>
-        <tr><th>Cargo</th><th class="num">Mediana</th><th class="num">Percentil 75 / topo</th><th>Fonte</th></tr>
-      </thead>
-      <tbody id="ref-body"></tbody>
-    </table>
-  </div>
+  <reference-table id="reference-table"></reference-table>
 
   <footer>
     <h4>Fontes consultadas (agosto/2026)</h4>
@@ -433,290 +85,31 @@
   </footer>
 </div>
 
-<script>
-  const EXEC = [
-    { role: "CIO", min: 32000, max: 53600, caption: "P25–P75 · Robert Half 2026" },
-    { role: "CTO", min: 29600, max: 49500, caption: "P25–P75 · Robert Half 2026" },
-    { role: "CSO", min: 31300, max: 52500, caption: "P25–P75 · Robert Half 2026" },
-  ];
+<script type="module">
+  import { EXEC, REGIONS, ROWS, REF } from "./scripts/cargos-data.js";
+  import "./scripts/salary-table.js";
+  import "./scripts/reference-table.js";
 
-  // Multiplicador aplicado sobre a base nacional da tabela (Robert Half + Nerdin 2026).
-  // Estimado a partir de: salario.com.br (SP/RJ/DF até 30% acima da média nacional),
-  // aprender21 (índice de custo/mercado por estado) e huntit.com.br (efeito nivelador do remoto).
-  // São estimativas direcionais, não medianas coletadas estado a estado.
-  const REGIONS = [
-    { code: "nacional", label: "Brasil (nacional) — base da tabela", mult: 1.00, note: "Média nacional, como publicada pelas fontes originais." },
-    { code: "sp", label: "São Paulo (SP)", mult: 1.15, note: "Maior polo de TI do país; salário.com.br e guias de RH mostram SP entre os patamares mais altos do Brasil." },
-    { code: "df", label: "Distrito Federal (DF)", mult: 1.10, note: "Junto com SP e RJ, salario.com.br aponta remuneração até 30% acima da média nacional." },
-    { code: "rj", label: "Rio de Janeiro (RJ)", mult: 1.05, note: "Junto com SP e DF, salario.com.br aponta remuneração até 30% acima da média nacional." },
-    { code: "rs", label: "Rio Grande do Sul (RS)", mult: 1.00, note: "Porto Alegre vem se aproximando de SP, sobretudo em vagas PJ e remotas (HUNT IT)." },
-    { code: "sc", label: "Santa Catarina (SC)", mult: 0.97, note: "Polo forte (Florianópolis/Joinville/Blumenau); índice de custo ~85 vs. SP=100 (aprender21)." },
-    { code: "pr", label: "Paraná (PR)", mult: 0.94, note: "Estimativa direcional Sul, entre SC e MG." },
-    { code: "mg", label: "Minas Gerais (MG)", mult: 0.88, note: "Índice de custo/mercado ~75 vs. SP=100 (aprender21)." },
-    { code: "pe", label: "Pernambuco (PE)", mult: 0.82, note: "Polo Recife/Porto Digital; índice ~70 vs. SP=100 (aprender21)." },
-    { code: "ba", label: "Bahia (BA)", mult: 0.80, note: "Estimativa direcional Nordeste, mercado em aquecimento." },
-    { code: "ce", label: "Ceará (CE)", mult: 0.78, note: "Estimativa direcional Nordeste, mercado em aquecimento." },
-    { code: "outros", label: "Demais estados (N / NE / CO, exceto DF)", mult: 0.75, note: "Interior e regiões fora dos polos costumam ficar 15–25% abaixo da média nacional." },
-    { code: "remoto", label: "100% remoto (empresa nacional)", mult: 1.05, note: "O remoto tende a nivelar salários para cima do interior/Nordeste, aproximando-se de SP (\"salário nacionalizado\")." },
-  ];
-  const regionByCode = Object.fromEntries(REGIONS.map(r => [r.code, r]));
+  const fmt = (n) => (n == null ? "—" : "R$ " + n.toLocaleString("pt-BR"));
+  const scale = (n, mult) => (n == null ? null : Math.round((n * mult) / 100) * 100);
 
-  // [cargo, area, nivel, cltMin, cltMax, pjMin, pjMax, fonte]
-  const ROWS = [
-    // Desenvolvimento
-    ["Desenvolvedor Front-End","Desenvolvimento","Júnior",4500,6500,6000,9000,"Nerdin 2026"],
-    ["Desenvolvedor Front-End","Desenvolvimento","Pleno",6500,9500,9000,13000,"Nerdin 2026"],
-    ["Desenvolvedor Front-End","Desenvolvimento","Sênior",9500,14500,13000,20000,"Nerdin 2026"],
-    ["Desenvolvedor Back-End","Desenvolvimento","Júnior",5000,7000,6500,10000,"Nerdin 2026"],
-    ["Desenvolvedor Back-End","Desenvolvimento","Pleno",7000,10500,10000,15000,"Nerdin 2026"],
-    ["Desenvolvedor Back-End","Desenvolvimento","Sênior",10500,16500,15000,24000,"Nerdin 2026"],
-    ["Desenvolvedor Full Stack","Desenvolvimento","Júnior",5500,8000,7500,11500,"Nerdin 2026"],
-    ["Desenvolvedor Full Stack","Desenvolvimento","Pleno",8000,12000,11500,17000,"Nerdin 2026"],
-    ["Desenvolvedor Full Stack","Desenvolvimento","Sênior",12000,18500,17000,27000,"Nerdin 2026"],
-    ["Desenvolvedor Java Back-End","Desenvolvimento","Júnior",5500,8000,7500,11500,"Nerdin 2026"],
-    ["Desenvolvedor Java Back-End","Desenvolvimento","Pleno",8000,12500,11500,17500,"Nerdin 2026"],
-    ["Desenvolvedor Java Back-End","Desenvolvimento","Sênior",12500,19000,17500,28000,"Nerdin 2026"],
-    ["Desenvolvedor Java Full Stack","Desenvolvimento","Júnior",6000,8500,8000,12500,"Nerdin 2026"],
-    ["Desenvolvedor Java Full Stack","Desenvolvimento","Pleno",8500,13000,12500,18500,"Nerdin 2026"],
-    ["Desenvolvedor Java Full Stack","Desenvolvimento","Sênior",13000,20000,18500,30000,"Nerdin 2026"],
-    ["Desenvolvedor .NET","Desenvolvimento","Júnior",5000,7500,6500,10500,"Nerdin 2026"],
-    ["Desenvolvedor .NET","Desenvolvimento","Pleno",7500,11000,10500,16000,"Nerdin 2026"],
-    ["Desenvolvedor .NET","Desenvolvimento","Sênior",11000,17500,16000,26000,"Nerdin 2026"],
-    ["Desenvolvedor PHP","Desenvolvimento","Júnior",4500,6500,6000,9000,"Nerdin 2026"],
-    ["Desenvolvedor PHP","Desenvolvimento","Pleno",6500,9500,9000,14000,"Nerdin 2026"],
-    ["Desenvolvedor PHP","Desenvolvimento","Sênior",9500,14500,14000,22000,"Nerdin 2026"],
-    ["Desenvolvedor Python","Desenvolvimento","Júnior",5500,8000,7500,11500,"Nerdin 2026"],
-    ["Desenvolvedor Python","Desenvolvimento","Pleno",8000,12500,11500,18500,"Nerdin 2026"],
-    ["Desenvolvedor Python","Desenvolvimento","Sênior",12500,19000,18500,30000,"Nerdin 2026"],
-    ["Desenvolvedor Mobile (Android/iOS)","Desenvolvimento","Júnior",5500,8000,7500,11500,"Nerdin 2026"],
-    ["Desenvolvedor Mobile (Android/iOS)","Desenvolvimento","Pleno",8000,12000,11500,17000,"Nerdin 2026"],
-    ["Desenvolvedor Mobile (Android/iOS)","Desenvolvimento","Sênior",12000,18500,17000,27000,"Nerdin 2026"],
-    // Dados
-    ["Desenvolvedor T-SQL","Dados","Júnior",5500,8000,7500,11500,"Nerdin 2026"],
-    ["Desenvolvedor T-SQL","Dados","Pleno",8000,12500,11500,18000,"Nerdin 2026"],
-    ["Desenvolvedor T-SQL","Dados","Sênior",12500,19000,18000,30000,"Nerdin 2026"],
-    ["Desenvolvedor PL/SQL","Dados","Júnior",6000,8500,8500,12500,"Nerdin 2026"],
-    ["Desenvolvedor PL/SQL","Dados","Pleno",8500,13500,12500,19500,"Nerdin 2026"],
-    ["Desenvolvedor PL/SQL","Dados","Sênior",13500,21000,19500,34000,"Nerdin 2026"],
-    ["Analista de Dados","Dados","Júnior",5500,8000,7500,11500,"Nerdin 2026"],
-    ["Analista de Dados","Dados","Pleno",8000,12000,11500,17000,"Nerdin 2026"],
-    ["Analista de Dados","Dados","Sênior",12000,18000,17000,27000,"Nerdin 2026"],
-    ["Analista Power BI","Dados","Júnior",5500,8000,7500,11500,"Nerdin 2026"],
-    ["Analista Power BI","Dados","Pleno",8000,12000,11500,17500,"Nerdin 2026"],
-    ["Analista Power BI","Dados","Sênior",12000,18000,17500,28000,"Nerdin 2026"],
-    ["Data Quality Analyst","Dados","Júnior",5500,7500,7500,10500,"Nerdin 2026"],
-    ["Data Quality Analyst","Dados","Pleno",7500,11000,10500,16000,"Nerdin 2026"],
-    ["Data Quality Analyst","Dados","Sênior",11000,16500,16000,26000,"Nerdin 2026"],
-    ["Analista de Inteligência Artificial","Dados","Júnior",7000,10000,10000,14500,"Nerdin 2026"],
-    ["Analista de Inteligência Artificial","Dados","Pleno",10000,15000,14500,22000,"Nerdin 2026"],
-    ["Analista de Inteligência Artificial","Dados","Sênior",15000,25000,22000,40000,"Nerdin 2026"],
-    ["Analista GenAI","Dados","Júnior",7500,10500,10500,15500,"Nerdin 2026"],
-    ["Analista GenAI","Dados","Pleno",10500,16000,15500,24000,"Nerdin 2026"],
-    ["Analista GenAI","Dados","Sênior",16000,28000,24000,45000,"Nerdin 2026"],
-    ["DBA Oracle","Dados","Júnior",6500,9000,9000,13500,"Nerdin 2026"],
-    ["DBA Oracle","Dados","Pleno",9000,14000,13500,20000,"Nerdin 2026"],
-    ["DBA Oracle","Dados","Sênior",14000,22000,20000,35000,"Nerdin 2026"],
-    ["DBA SQL Server","Dados","Júnior",6000,8500,8500,12500,"Nerdin 2026"],
-    ["DBA SQL Server","Dados","Pleno",8500,13500,12500,19500,"Nerdin 2026"],
-    ["DBA SQL Server","Dados","Sênior",13500,21000,19500,34000,"Nerdin 2026"],
-    ["DBA MySQL","Dados","Júnior",5500,8000,7500,11500,"Nerdin 2026"],
-    ["DBA MySQL","Dados","Pleno",8000,12000,11500,17500,"Nerdin 2026"],
-    ["DBA MySQL","Dados","Sênior",12000,18500,17500,28000,"Nerdin 2026"],
-    ["DBA NoSQL","Dados","Júnior",6000,8500,8500,12500,"Nerdin 2026"],
-    ["DBA NoSQL","Dados","Pleno",8500,13000,12500,19000,"Nerdin 2026"],
-    ["DBA NoSQL","Dados","Sênior",13000,20000,19000,32000,"Nerdin 2026"],
-    // DevOps / Infraestrutura
-    ["Administrador de Redes","DevOps/Infra","Júnior",4500,6500,6000,9000,"Nerdin 2026"],
-    ["Administrador de Redes","DevOps/Infra","Pleno",6500,9500,9000,14000,"Nerdin 2026"],
-    ["Administrador de Redes","DevOps/Infra","Sênior",9500,14500,14000,22000,"Nerdin 2026"],
-    ["Analista de Infraestrutura","DevOps/Infra","Júnior",4000,6000,5500,8000,"Nerdin 2026"],
-    ["Analista de Infraestrutura","DevOps/Infra","Pleno",6000,9000,8000,13000,"Nerdin 2026"],
-    ["Analista de Infraestrutura","DevOps/Infra","Sênior",9000,14000,13000,20000,"Nerdin 2026"],
-    ["Analista AWS","DevOps/Infra","Júnior",6500,9000,9000,13500,"Nerdin 2026"],
-    ["Analista AWS","DevOps/Infra","Pleno",9000,14000,13500,20000,"Nerdin 2026"],
-    ["Analista AWS","DevOps/Infra","Sênior",14000,22000,20000,36000,"Nerdin 2026"],
-    ["Analista Azure","DevOps/Infra","Júnior",6500,9000,9000,13500,"Nerdin 2026"],
-    ["Analista Azure","DevOps/Infra","Pleno",9000,14000,13500,20000,"Nerdin 2026"],
-    ["Analista Azure","DevOps/Infra","Sênior",14000,22000,20000,36000,"Nerdin 2026"],
-    ["Analista de Cloud (AWS/Azure/GCP)","DevOps/Infra","Júnior",6000,8500,8500,12500,"Nerdin 2026"],
-    ["Analista de Cloud (AWS/Azure/GCP)","DevOps/Infra","Pleno",8500,12500,12500,18000,"Nerdin 2026"],
-    ["Analista de Cloud (AWS/Azure/GCP)","DevOps/Infra","Sênior",12500,19000,18000,28000,"Nerdin 2026"],
-    ["DevOps / SRE","DevOps/Infra","Júnior",7000,10000,10000,14500,"Nerdin 2026"],
-    ["DevOps / SRE","DevOps/Infra","Pleno",10000,14500,14500,20000,"Nerdin 2026"],
-    ["DevOps / SRE","DevOps/Infra","Sênior",14500,22000,20000,32000,"Nerdin 2026"],
-    // Segurança
-    ["Cybersecurity Analyst","Segurança","Júnior",6500,9000,9000,13500,"Nerdin 2026"],
-    ["Cybersecurity Analyst","Segurança","Pleno",9000,14000,13500,20000,"Nerdin 2026"],
-    ["Cybersecurity Analyst","Segurança","Sênior",14000,22000,20000,36000,"Nerdin 2026"],
-    // Arquitetura
-    ["Arquiteto(a) de Software","Arquitetura","Júnior",5500,8000,7500,11500,"Nerdin 2026"],
-    ["Arquiteto(a) de Software","Arquitetura","Pleno",8500,13000,12500,19000,"Nerdin 2026"],
-    ["Arquiteto(a) de Software","Arquitetura","Sênior",14000,21000,20000,33000,"Nerdin 2026"],
-    ["Arquiteto(a) de Soluções","Arquitetura","Pleno",9000,14000,13000,20000,"Glassdoor / Nerdin 2026"],
-    ["Arquiteto(a) de Soluções","Arquitetura","Sênior",14500,22000,21000,35000,"Glassdoor / Nerdin 2026"],
-    ["Arquiteto(a) de Nuvem (Cloud Architect)","Arquitetura","Sênior",13500,20000,null,null,"Glassdoor 2026"],
-    // Produto
-    ["Scrum Master","Produto","Júnior",6000,8500,8500,12500,"Nerdin 2026"],
-    ["Scrum Master","Produto","Pleno",8500,12500,12500,18000,"Nerdin 2026"],
-    ["Scrum Master","Produto","Sênior",12500,18000,18000,28000,"Nerdin 2026"],
-    ["Product Owner","Produto","Júnior",6500,9000,9000,13500,"Nerdin 2026"],
-    ["Product Owner","Produto","Pleno",9000,13500,13500,20000,"Nerdin 2026"],
-    ["Product Owner","Produto","Sênior",13500,20000,20000,30000,"Nerdin 2026"],
-    // Gestão / Liderança
-    ["Líder Técnico / Tech Lead","Gestão/Liderança","Júnior",9000,12000,12000,18000,"Nerdin 2026"],
-    ["Líder Técnico / Tech Lead","Gestão/Liderança","Pleno",12000,17000,18000,26000,"Nerdin 2026"],
-    ["Líder Técnico / Tech Lead","Gestão/Liderança","Sênior",17000,25000,26000,38000,"Nerdin 2026"],
-    ["Gerente de TI","Gestão/Liderança","Júnior",12000,16000,16000,22000,"Nerdin 2026"],
-    ["Gerente de TI","Gestão/Liderança","Pleno",16000,22000,22000,32000,"Nerdin 2026"],
-    ["Gerente de TI","Gestão/Liderança","Sênior",22000,32000,32000,48000,"Nerdin 2026"],
-    ["CTO / Head de Tecnologia","Gestão/Liderança","Júnior",20000,30000,30000,45000,"Nerdin 2026"],
-    ["CTO / Head de Tecnologia","Gestão/Liderança","Pleno",30000,45000,45000,65000,"Nerdin 2026"],
-    ["CTO / Head de Tecnologia","Gestão/Liderança","Sênior",45000,70000,65000,100000,"Nerdin 2026"],
-    // Gestão — Robert Half / Glassdoor (sem distinção CLT/PJ, valores P25–P75)
-    ["Head of Engineering / Head de Tecnologia","Gestão/Liderança","Gerência",18800,42600,null,null,"Glassdoor 2026"],
-    ["Head de Arquitetura","Gestão/Liderança","Gerência",16800,37500,null,null,"Glassdoor 2026 (estimado sobre Head of Engineering)"],
-    ["Gerente de TI Generalista","Gestão/Liderança","Gerência",20950,35050,null,null,"Robert Half 2026"],
-    ["Gerente de Desenvolvimento","Gestão/Liderança","Gerência",20900,35000,null,null,"Robert Half 2026"],
-    ["Gerente de Sistemas","Gestão/Liderança","Gerência",20650,33800,null,null,"Robert Half 2026"],
-    ["Gerente de Dados","Gestão/Liderança","Gerência",22700,37950,null,null,"Robert Half 2026"],
-    ["Gerente de BI","Gestão/Liderança","Gerência",19450,32550,null,null,"Robert Half 2026"],
-    ["Gerente de Segurança da Informação","Gestão/Liderança","Gerência",22250,37250,null,null,"Robert Half 2026"],
-    ["Gerente de Infraestrutura","Gestão/Liderança","Gerência",16700,27950,null,null,"Robert Half 2026"],
-    // Executivo — Robert Half
-    ["CIO — Chief Information Officer","Executivo","C-Level",32000,53600,null,null,"Robert Half 2026"],
-    ["CTO — Chief Technology Officer","Executivo","C-Level",29600,49500,null,null,"Robert Half 2026"],
-    ["CSO — Chief Security Officer","Executivo","C-Level",31300,52500,null,null,"Robert Half 2026"],
-  ];
-
-  const REF = [
-    ["Analista de Desenvolvimento de Sistemas", "R$ 7.800", "R$ 11.141 (Q3)", "salario.com.br"],
-    ["Engenheiro(a) de Software", "R$ 11.403", "R$ 15.778 (Q3)", "salario.com.br"],
-    ["Administrador(a) de Banco de Dados", "R$ 9.000", "R$ 12.500 (Q3)", "salario.com.br"],
-    ["Analista de Suporte Técnico", "R$ 2.989", "R$ 4.330 (Q3)", "salario.com.br"],
-    ["Arquitetura de Sistemas", "R$ 14.277", "R$ 24.439 (Q3)", "salario.com.br"],
-    ["Gerente de Desenvolvimento", "R$ 16.108 (média)", "R$ 34.234 (teto)", "salario.com.br"],
-    ["Diretor(a) de Tecnologia", "—", "R$ 69.625 (teto, CLT)", "salario.com.br"],
-    ["Programador(a) — Júnior", "R$ 4.968", "—", "Código Fonte TV 2026 (CLT)"],
-    ["Programador(a) — Pleno", "R$ 8.207", "—", "Código Fonte TV 2026 (CLT)"],
-    ["Programador(a) — Sênior", "R$ 13.298", "—", "Código Fonte TV 2026 (CLT)"],
-    ["CTO — Brasil (todas as buscas)", "R$ 22.357 (média)", "R$ 64.467 (P90)", "Glassdoor"],
-    ["Arquiteto(a) de Soluções — Júnior a Sênior", "R$ 5.500 (jr, mediana)", "R$ 14.654 (sr, mediana)", "Glassdoor / Betrybe"],
-    ["Diretor(a) de Engenharia (Engineering Director)", "—", "R$ 50.500 (média)", "Glassdoor"],
-  ];
-
-  const fmt = (n) => n == null ? "—" : "R$ " + n.toLocaleString("pt-BR");
-  const scale = (n, mult) => n == null ? null : Math.round((n * mult) / 100) * 100;
-
-  function diffLabel(cltMin, cltMax, pjMin, pjMax) {
-    if (cltMin == null || pjMin == null) return { text: "—", cls: "muted" };
-    const cltMid = (cltMin + cltMax) / 2;
-    const pjMid = (pjMin + pjMax) / 2;
-    const pct = ((pjMid - cltMid) / cltMid) * 100;
-    return { text: pct.toFixed(0) + "%", cls: "diff up" };
-  }
-
-  const areas = [...new Set(ROWS.map(r => r[1]))];
-  const levels = ["Júnior", "Pleno", "Sênior", "Gerência", "C-Level"];
-
-  const state = { areas: new Set(), levels: new Set(), q: "", region: "nacional" };
-
-  const regionSelect = document.getElementById("region");
-  regionSelect.innerHTML = REGIONS.map(r => `<option value="${r.code}">${r.label}</option>`).join("");
-  regionSelect.addEventListener("change", (e) => {
-    state.region = e.target.value;
-    renderExec();
-    render();
-  });
-
-  const regionNote = document.getElementById("region-note");
-
-  function renderExec() {
-    const mult = regionByCode[state.region].mult;
-    const execGrid = document.getElementById("exec-grid");
-    execGrid.innerHTML = EXEC.map(e => `
+  const execGrid = document.getElementById("exec-grid");
+  function renderExec(mult) {
+    execGrid.innerHTML = EXEC.map((e) => `
       <div class="exec-card">
         <div class="role">${e.role}</div>
         <div class="range">${fmt(scale(e.min, mult))} – ${fmt(scale(e.max, mult))}</div>
         <div class="caption">${e.caption}</div>
       </div>`).join("");
-    regionNote.innerHTML = state.region === "nacional"
-      ? "Selecione um estado/região acima para estimar as faixas fora da média nacional."
-      : `<strong>${regionByCode[state.region].label}:</strong> ${regionByCode[state.region].note} Valores abaixo são estimativas (base nacional × ${mult.toFixed(2)}), não medianas coletadas nesse estado.`;
   }
+  renderExec(1);
 
-  const areaChips = document.getElementById("area-chips");
-  areaChips.innerHTML = areas.map(a => `<button class="chip" type="button" data-area="${a}" aria-pressed="false">${a}</button>`).join("");
+  const salaryTable = document.getElementById("salary-table");
+  salaryTable.rows = ROWS;
+  salaryTable.regions = REGIONS;
+  salaryTable.addEventListener("region-change", (e) => renderExec(e.detail.mult));
 
-  const levelChips = document.getElementById("level-chips");
-  levelChips.innerHTML = levels.map(l => `<button class="chip" type="button" data-level="${l}" aria-pressed="false">${l}</button>`).join("");
-
-  areaChips.addEventListener("click", (e) => {
-    const btn = e.target.closest(".chip");
-    if (!btn) return;
-    const a = btn.dataset.area;
-    state.areas.has(a) ? state.areas.delete(a) : state.areas.add(a);
-    btn.setAttribute("aria-pressed", state.areas.has(a));
-    render();
-  });
-  levelChips.addEventListener("click", (e) => {
-    const btn = e.target.closest(".chip");
-    if (!btn) return;
-    const l = btn.dataset.level;
-    state.levels.has(l) ? state.levels.delete(l) : state.levels.add(l);
-    btn.setAttribute("aria-pressed", state.levels.has(l));
-    render();
-  });
-  document.getElementById("search").addEventListener("input", (e) => {
-    state.q = e.target.value.trim().toLowerCase();
-    render();
-  });
-
-  const tbody = document.getElementById("table-body");
-  const resultCount = document.getElementById("result-count");
-
-  function render() {
-    const filtered = ROWS.filter(r => {
-      const [cargo, area, nivel] = r;
-      if (state.q && !cargo.toLowerCase().includes(state.q)) return false;
-      if (state.areas.size && !state.areas.has(area)) return false;
-      if (state.levels.size && !state.levels.has(nivel)) return false;
-      return true;
-    });
-
-    resultCount.textContent = `${filtered.length} cargo${filtered.length === 1 ? "" : "s"}`;
-
-    if (!filtered.length) {
-      tbody.innerHTML = `<tr class="empty-row"><td colspan="6">Nenhum cargo encontrado com esses filtros.</td></tr>`;
-      return;
-    }
-
-    const mult = regionByCode[state.region].mult;
-    tbody.innerHTML = filtered.map(([cargo, area, nivel, cltMin, cltMax, pjMin, pjMax, fonte]) => {
-      const d = diffLabel(cltMin, cltMax, pjMin, pjMax);
-      const sCltMin = scale(cltMin, mult), sCltMax = scale(cltMax, mult);
-      const sPjMin = scale(pjMin, mult), sPjMax = scale(pjMax, mult);
-      return `
-        <tr>
-          <td class="role-cell"><span class="cargo">${cargo}</span><span class="area">${area}</span></td>
-          <td><span class="level-badge">${nivel}</span></td>
-          <td class="num figure clt">${fmt(sCltMin)} – ${fmt(sCltMax)}</td>
-          <td class="num figure pj">${sPjMin == null ? "—" : fmt(sPjMin) + " – " + fmt(sPjMax)}</td>
-          <td class="num ${d.cls}">${d.text}</td>
-          <td class="src">${fonte}</td>
-        </tr>`;
-    }).join("");
-  }
-
-  renderExec();
-  render();
-
-  document.getElementById("ref-body").innerHTML = REF.map(([cargo, med, top, fonte]) => `
-    <tr>
-      <td>${cargo}</td>
-      <td class="num">${med}</td>
-      <td class="num">${top}</td>
-      <td class="src">${fonte}</td>
-    </tr>`).join("");
+  document.getElementById("reference-table").rows = REF;
 </script>
 </body>
 </html>
