@@ -154,6 +154,7 @@ class SalaryTable extends HTMLElement {
     this.attachShadow({ mode: "open" });
     this._rows = [];
     this._regions = [];
+    this._index = null;
     this._shellBuilt = false;
     this.state = { areas: new Set(), levels: new Set(), q: "", region: "nacional" };
   }
@@ -164,6 +165,16 @@ class SalaryTable extends HTMLElement {
     this._updateAll();
   }
   get rows() { return this._rows; }
+
+  // Índice pré-computado de data/cargos.json (ROWS_INDEX do data-loader):
+  // { byArea: { area: [rowIndex, ...] }, byNivel: { nivel: [rowIndex, ...] } }.
+  // Quando presente, filtros de área/nível usam essas listas em vez de varrer
+  // this._rows inteiro a cada clique.
+  set index(v) {
+    this._index = v || null;
+    this._render();
+  }
+  get index() { return this._index; }
 
   set regions(v) {
     this._regions = v || [];
@@ -228,7 +239,7 @@ class SalaryTable extends HTMLElement {
   _ensureChips() {
     if (this._chipsBuilt || !this._rows.length) return;
     this._chipsBuilt = true;
-    const areas = [...new Set(this._rows.map((r) => r[1]))];
+    const areas = this._index?.byArea ? Object.keys(this._index.byArea) : [...new Set(this._rows.map((r) => r[1]))];
     const levels = ["Júnior", "Pleno", "Sênior", "Gerência", "C-Level"];
     this.$areaChips.innerHTML = areas.map((a) => `<button class="chip" type="button" data-area="${a}" aria-pressed="false">${a}</button>`).join("");
     this.$levelChips.innerHTML = levels.map((l) => `<button class="chip" type="button" data-level="${l}" aria-pressed="false">${l}</button>`).join("");
@@ -248,15 +259,42 @@ class SalaryTable extends HTMLElement {
     this._render();
   }
 
+  // Candidatos por área/nível a partir do índice pré-computado: união dentro de
+  // cada faceta (qualquer área marcada), interseção entre facetas (área E nível).
+  _candidateIndexesFromIndex() {
+    const idx = this._index;
+    const union = (map, keys) => {
+      const set = new Set();
+      keys.forEach((k) => (map[k] || []).forEach((i) => set.add(i)));
+      return set;
+    };
+    let candidate = null;
+    if (this.state.areas.size) candidate = union(idx.byArea || {}, this.state.areas);
+    if (this.state.levels.size) {
+      const levelSet = union(idx.byNivel || {}, this.state.levels);
+      candidate = candidate ? new Set([...candidate].filter((i) => levelSet.has(i))) : levelSet;
+    }
+    return candidate; // null = sem filtro de área/nível (todas as linhas)
+  }
+
   _render() {
     if (!this._shellBuilt || !this._rows.length) return;
-    const filtered = this._rows.filter((r) => {
-      const [cargo, area, nivel] = r;
-      if (this.state.q && !cargo.toLowerCase().includes(this.state.q)) return false;
-      if (this.state.areas.size && !this.state.areas.has(area)) return false;
-      if (this.state.levels.size && !this.state.levels.has(nivel)) return false;
-      return true;
-    });
+
+    let base = this._rows.map((r, i) => [i, r]);
+    if (this._index && (this.state.areas.size || this.state.levels.size)) {
+      const candidate = this._candidateIndexesFromIndex();
+      base = base.filter(([i]) => candidate.has(i));
+    } else if (this.state.areas.size || this.state.levels.size) {
+      base = base.filter(([, r]) => {
+        const [, area, nivel] = r;
+        if (this.state.areas.size && !this.state.areas.has(area)) return false;
+        if (this.state.levels.size && !this.state.levels.has(nivel)) return false;
+        return true;
+      });
+    }
+    const filtered = base
+      .map(([, r]) => r)
+      .filter((r) => !this.state.q || r[0].toLowerCase().includes(this.state.q));
 
     this.$resultCount.textContent = `${filtered.length} cargo${filtered.length === 1 ? "" : "s"}`;
 

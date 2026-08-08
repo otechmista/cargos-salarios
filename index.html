@@ -86,12 +86,14 @@
 </div>
 
 <script type="module">
-  import { EXEC, REGIONS, ROWS, REF } from "./scripts/cargos-data.js";
+  import { loadCargosData } from "./scripts/data-loader.js";
   import "./scripts/salary-table.js";
   import "./scripts/reference-table.js";
 
   const fmt = (n) => (n == null ? "—" : "R$ " + n.toLocaleString("pt-BR"));
   const scale = (n, mult) => (n == null ? null : Math.round((n * mult) / 100) * 100);
+
+  const { EXEC, REGIONS, ROWS, ROWS_INDEX, REF, meta } = await loadCargosData();
 
   const execGrid = document.getElementById("exec-grid");
   function renderExec(mult) {
@@ -106,10 +108,14 @@
 
   const salaryTable = document.getElementById("salary-table");
   salaryTable.rows = ROWS;
+  salaryTable.index = ROWS_INDEX;
   salaryTable.regions = REGIONS;
   salaryTable.addEventListener("region-change", (e) => renderExec(e.detail.mult));
 
   document.getElementById("reference-table").rows = REF;
+
+  const metaLine = document.querySelector(".meta-line");
+  if (metaLine) metaLine.textContent = `valores brutos mensais em R$ · última sincronização dos dados: ${meta.cargos.lastSync}`;
 </script>
 </body>
 </html>

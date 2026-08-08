@@ -12,6 +12,11 @@ Fontes: Robert Half (Guia Salarial 2026), Michael Page, Glassdoor Brasil, Nerdin
 ```
 index.html              tabela de cargos e salários
 calculadora.html         calculadora CLT x PJ
+data/
+  cargos.json              domínio "cargos" — cargo/área/nível/CLT/PJ/fonte + índice byArea/byNivel
+  regioes.json              domínio "regiões" — multiplicador por estado + índice byCode
+  executivos.json           domínio "executivos" — CIO/CTO/CSO (Robert Half)
+  referencias.json          domínio "referências" — medianas agregadas sem distinção CLT/PJ
 assets/
   styles.css              tokens (cores, tipografia) + chrome compartilhado das páginas
   calculadora.css          estilos específicos da calculadora
@@ -20,12 +25,36 @@ assets/
   favicon-cargos.svg
   favicon-calculadora.svg
 scripts/
-  cargos-data.js           dados: EXEC, REGIONS, ROWS, REF (fonte única da verdade)
-  salary-table.js           Web Component <salary-table> — tabela filtrável (busca, área, nível, região)
-  reference-table.js        Web Component <reference-table> — tabela de referências agregadas
-  calculadora.js             lógica de cálculo (INSS/IRRF/Simples) + wiring do formulário
+  data-loader.js             carrega data/*.json (fetch) e devolve ROWS/REGIONS/EXEC/REF prontos
+  salary-table.js             Web Component <salary-table> — tabela filtrável (busca, área, nível, região)
+  reference-table.js          Web Component <reference-table> — tabela de referências agregadas
+  calculadora.js               lógica de cálculo (INSS/IRRF/Simples) + wiring do formulário
 .github/workflows/deploy.yml  publica no GitHub Pages a cada push em main
 ```
+
+### Os dados (`data/*.json`)
+
+Cada domínio é um arquivo próprio, no formato compacto `{ fields, rows }` (tuplas em vez de objetos repetindo
+chaves — menor payload), mais um `index` pré-computado e a data da última sincronização:
+
+```json
+{
+  "domain": "cargos",
+  "lastSync": "2026-08-08",
+  "sources": ["Robert Half 2026", "Nerdin 2026", "..."],
+  "fields": ["cargo", "area", "nivel", "cltMin", "cltMax", "pjMin", "pjMax", "fonte"],
+  "rows": [["Desenvolvedor Front-End", "Desenvolvimento", "Júnior", 4500, 6500, 6000, 9000, "Nerdin 2026"], "..."],
+  "index": { "byArea": { "Desenvolvimento": [0, 1, 2, "..."] }, "byNivel": { "Júnior": [0, 3, 6, "..."] } }
+}
+```
+
+`scripts/data-loader.js` busca os quatro arquivos com `fetch`, converte `regioes`/`executivos` (poucas linhas)
+para objetos e mantém `cargos`/`referencias` como tuplas. `<salary-table>` recebe o índice via `el.index =
+ROWS_INDEX` e usa `byArea`/`byNivel` para montar o conjunto de candidatos ao filtrar, em vez de varrer as 114
+linhas a cada clique.
+
+Para regenerar os JSONs a partir de uma edição manual, edite os arquivos em `data/` diretamente — eles são a
+fonte única da verdade; não há mais dados de cargos hardcoded em nenhum `.js`.
 
 ### Os Web Components
 
@@ -35,9 +64,11 @@ scripts/
 ```html
 <salary-table id="salary-table"></salary-table>
 <script type="module">
-  import { ROWS, REGIONS } from "./scripts/cargos-data.js";
+  import { loadCargosData } from "./scripts/data-loader.js";
+  const { ROWS, ROWS_INDEX, REGIONS } = await loadCargosData();
   const el = document.getElementById("salary-table");
   el.rows = ROWS;
+  el.index = ROWS_INDEX;
   el.regions = REGIONS;
 </script>
 ```
@@ -89,13 +120,9 @@ Os `<head>` já incluem Open Graph e Twitter Card apontando para `assets/og-imag
 
 ## Atualizar os dados
 
-Tudo fica em `scripts/cargos-data.js`:
-
-```js
-// ["Cargo", "Área", "Nível", cltMin, cltMax, pjMin, pjMax, "Fonte"]
-export const ROWS = [ ... ];
-// multiplicador por estado, aplicado sobre a base nacional de ROWS/EXEC
-export const REGIONS = [ ... ];
-```
+Edite o arquivo do domínio correspondente em `data/` (ver seção "Os dados" acima) — `cargos.json` para
+cargos/salários, `regioes.json` para os multiplicadores por estado, `executivos.json` para CIO/CTO/CSO e
+`referencias.json` para a tabela agregada. Ao adicionar ou remover linhas de `cargos.json`, recalcule
+`index.byArea`/`index.byNivel` (listas de posições no array `rows`) e atualize `lastSync`.
 
 Os parâmetros da calculadora (tabelas INSS/IRRF, Simples Nacional) ficam no topo de `scripts/calculadora.js`.
